@@ -123,6 +123,21 @@ function gameOfLife(number, matrix) {
 
 gameOfLife(10, newMatrix);
 
+const test = document.getElementById("test");
+console.log(test);
+const squares = document.querySelectorAll(".container__row--square");
+squares[0].style.backgroundColor = "yellow";
+
+function testing() {
+  alert("hi");
+}
+function changeBackgroundColor() {
+  console.log("hi");
+  squares.style.backgroundColor = "yellow";
+}
+
+squares.addEventListener("click", changeBackgroundColor);
+test.addEventListener("click", testing);
 module.exports = {
   checkOneOrZero,
   checkCountOfOnes,
