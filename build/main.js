@@ -3,7 +3,7 @@ const newMatrix = [
   [0, 0, 1, 0, 0, 0],
   [0, 0, 1, 0, 0, 0],
   [0, 0, 1, 0, 0, 0],
-  [0, 0, 0, 0, 0, 0],
+  [0, 0, 1, 0, 0, 0],
   [0, 0, 0, 0, 0, 0],
 ];
 
@@ -123,20 +123,30 @@ function changeColors(matrix) {
       if (matrix[row][column] === 1) {
         squares[column + length * row].style.backgroundColor = "yellow";
       }
+      if (matrix[row][column] === 0) {
+        squares[column + length * row].style.backgroundColor = "lightgrey";
+      }
     }
   }
 }
 
+changeColors(newMatrix);
+
 function gameOfLife(number, matrix) {
+  let iterator = 0;
+  setTimeout(500);
   let changingMatrix = loopMatrix(matrix);
-  for (let i = 0; i < number; i++) {
+
+  const loop = setInterval(() => {
     changingMatrix = loopMatrix(changingMatrix);
     changeColors(changingMatrix);
-  }
+    iterator++;
+    if (iterator === number) clearInterval(loop);
+  }, 500);
 }
 
 function startGame() {
-  gameOfLife(10, newMatrix);
+  gameOfLife(20, newMatrix);
 }
 
 const startGameButton = document.getElementById("button");

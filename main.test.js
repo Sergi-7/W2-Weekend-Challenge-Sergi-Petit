@@ -4,7 +4,7 @@ const {
   checkCountOfOnes,
   checkCountOfZeros,
   updateMatrix,
-} = require("./main");
+} = require("./build/main");
 
 describe("Given a checkOneOrZero function", () => {
   describe("When it receives an zero ", () => {
