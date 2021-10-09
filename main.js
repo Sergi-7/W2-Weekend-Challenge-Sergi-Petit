@@ -7,6 +7,15 @@ const newMatrix = [
   [0, 0, 0, 0, 0, 0],
 ];
 
+const updatedMatrix = [
+  [0, 0, 0, 0, 0, 0],
+  [0, 0, 1, 0, 0, 0],
+  [0, 0, 1, 0, 0, 0],
+  [0, 0, 1, 0, 0, 0],
+  [0, 0, 0, 0, 0, 0],
+  [0, 0, 0, 0, 0, 0],
+];
+
 // funcion para comprobar vecinos
 function checkNeighbours(matrix, row, column) {
   let count = 0;
@@ -69,28 +78,18 @@ function checkOneOrZero(matrix, positionX, positionY) {
 
 // funcion crear nueva matriz
 
-function updateMatrix(count, row, column) {
-  const updatedMatrix = [
-    [0, 0, 0, 0, 0, 0],
-    [0, 0, 1, 0, 0, 0],
-    [0, 0, 1, 0, 0, 0],
-    [0, 0, 1, 0, 0, 0],
-    [0, 0, 0, 0, 0, 0],
-    [0, 0, 0, 0, 0, 0],
-  ];
-
+function updateMatrix(matrix, count, row, column) {
   if (count === true) {
     updatedMatrix[row][column] = 1;
   } else {
     updatedMatrix[row][column] = 0;
   }
-  return updatedMatrix;
 }
 
 // funcion para recorrer la matriz
 function loopMatrix(matrix) {
   for (let row = 1; row < matrix.length - 1; row++) {
-    for (let column = 1; column < matrix[column].length - 1; column++) {
+    for (let column = 1; column < matrix[row].length - 1; column++) {
       const actualRow = row;
       const actualColumn = column;
       const checkNeighbourCount = checkNeighbours(
@@ -102,19 +101,21 @@ function loopMatrix(matrix) {
 
       if (oneOrZero === true) {
         const countOfOnes = checkCountOfOnes(checkNeighbourCount);
-        updateMatrix(countOfOnes, actualRow, actualColumn);
+        updateMatrix(updatedMatrix, countOfOnes, actualRow, actualColumn);
       } else if (oneOrZero === false) {
         const countOfZeros = checkCountOfOnes(checkNeighbourCount);
-        updateMatrix(countOfZeros, actualRow, actualColumn);
+        updateMatrix(updatedMatrix, countOfZeros, actualRow, actualColumn);
       }
     }
   }
-  return updateMatrix();
 }
+
+loopMatrix(newMatrix);
 
 module.exports = {
   checkOneOrZero,
   checkCountOfOnes,
   checkCountOfZeros,
   checkNeighbours,
+  updateMatrix,
 };
