@@ -6,7 +6,7 @@ const newMatrix = [
   [0, 0, 0, 0, 0],
 ];
 
-// funcion para comprobar las posiciones vecinas
+// funcion para recorrer array posicion por posicion
 function checkNeighbours(matrix, row, column) {
   let count = 0;
   debugger;
@@ -48,6 +48,16 @@ function checkNeighbours(matrix, row, column) {
     count++;
   }
   return count;
+}
+// funcion para comprobar si la posicion es 1 o 0
+
+function checkOneOrZero(matrix, positionX, positionY) {
+  if (matrix[positionX][positionY] === 0) {
+    return false;
+  }
+  if (matrix[positionX][positionY] === 1) {
+    return true;
+  }
 }
 
 // funcion para cambiar el estado de la posicion
