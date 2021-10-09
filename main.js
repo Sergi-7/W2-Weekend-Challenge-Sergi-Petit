@@ -7,15 +7,6 @@ const newMatrix = [
   [0, 0, 0, 0, 0, 0],
 ];
 
-const updatedMatrix = [
-  [0, 0, 0, 0, 0, 0],
-  [0, 0, 1, 0, 0, 0],
-  [0, 0, 1, 0, 0, 0],
-  [0, 0, 1, 0, 0, 0],
-  [0, 0, 0, 0, 0, 0],
-  [0, 0, 0, 0, 0, 0],
-];
-
 // funcion para comprobar vecinos
 function checkNeighbours(matrix, row, column) {
   let count = 0;
@@ -62,7 +53,9 @@ function checkCountOfOnes(count) {
   if (count >= 4) {
     return false;
   }
-  return true;
+  if (count === 2 || count === 3) {
+    return true;
+  }
 }
 
 // funcion para comprobar si la posicion es 1 o 0
@@ -80,14 +73,23 @@ function checkOneOrZero(matrix, positionX, positionY) {
 
 function updateMatrix(matrix, count, row, column) {
   if (count === true) {
-    updatedMatrix[row][column] = 1;
+    matrix[row][column] = 1;
   } else {
-    updatedMatrix[row][column] = 0;
+    matrix[row][column] = 0;
   }
+  return matrix;
 }
 
 // funcion para recorrer la matriz
 function loopMatrix(matrix) {
+  const newestMatrix = [
+    [0, 0, 0, 0, 0, 0],
+    [0, 0, 0, 0, 0, 0],
+    [0, 0, 0, 0, 0, 0],
+    [0, 0, 0, 0, 0, 0],
+    [0, 0, 0, 0, 0, 0],
+    [0, 0, 0, 0, 0, 0],
+  ];
   for (let row = 1; row < matrix.length - 1; row++) {
     for (let column = 1; column < matrix[row].length - 1; column++) {
       const actualRow = row;
@@ -101,14 +103,19 @@ function loopMatrix(matrix) {
 
       if (oneOrZero === true) {
         const countOfOnes = checkCountOfOnes(checkNeighbourCount);
-        updateMatrix(updatedMatrix, countOfOnes, actualRow, actualColumn);
+        updateMatrix(newestMatrix, countOfOnes, actualRow, actualColumn);
       } else if (oneOrZero === false) {
-        const countOfZeros = checkCountOfOnes(checkNeighbourCount);
-        updateMatrix(updatedMatrix, countOfZeros, actualRow, actualColumn);
+        const countOfZeros = checkCountOfZeros(checkNeighbourCount);
+        updateMatrix(newestMatrix, countOfZeros, actualRow, actualColumn);
       }
     }
   }
+  return newestMatrix;
 }
+
+// funcion para repetir el loop
+
+function gameOfLife() {}
 
 loopMatrix(newMatrix);
 

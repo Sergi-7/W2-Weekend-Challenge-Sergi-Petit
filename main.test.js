@@ -223,6 +223,14 @@ describe("Given a updateMatrix function", () => {
       const count = false;
       const row = 1;
       const column = 2;
+      const newMatrix = [
+        [0, 0, 0, 0, 0, 0],
+        [0, 0, 1, 0, 0, 0],
+        [0, 0, 1, 0, 0, 0],
+        [0, 0, 1, 0, 0, 0],
+        [0, 0, 0, 0, 0, 0],
+        [0, 0, 0, 0, 0, 0],
+      ];
 
       const expected = [
         [0, 0, 0, 0, 0, 0],
@@ -232,7 +240,7 @@ describe("Given a updateMatrix function", () => {
         [0, 0, 0, 0, 0, 0],
         [0, 0, 0, 0, 0, 0],
       ];
-      const result = updateMatrix(count, row, column);
+      const result = updateMatrix(newMatrix, count, row, column);
 
       expect(result).toEqual(expected);
     });
@@ -242,6 +250,14 @@ describe("Given a updateMatrix function", () => {
       const count = true;
       const row = 2;
       const column = 2;
+      const newMatrix = [
+        [0, 0, 0, 0, 0, 0],
+        [0, 0, 1, 0, 0, 0],
+        [0, 0, 1, 0, 0, 0],
+        [0, 0, 1, 0, 0, 0],
+        [0, 0, 0, 0, 0, 0],
+        [0, 0, 0, 0, 0, 0],
+      ];
 
       const expected = [
         [0, 0, 0, 0, 0, 0],
@@ -251,7 +267,7 @@ describe("Given a updateMatrix function", () => {
         [0, 0, 0, 0, 0, 0],
         [0, 0, 0, 0, 0, 0],
       ];
-      const result = updateMatrix(count, row, column);
+      const result = updateMatrix(newMatrix, count, row, column);
 
       expect(result).toEqual(expected);
     });
@@ -261,6 +277,14 @@ describe("Given a updateMatrix function", () => {
       const count = false;
       const row = 3;
       const column = 2;
+      const newMatrix = [
+        [0, 0, 0, 0, 0, 0],
+        [0, 0, 1, 0, 0, 0],
+        [0, 0, 1, 0, 0, 0],
+        [0, 0, 1, 0, 0, 0],
+        [0, 0, 0, 0, 0, 0],
+        [0, 0, 0, 0, 0, 0],
+      ];
 
       const expected = [
         [0, 0, 0, 0, 0, 0],
@@ -270,7 +294,7 @@ describe("Given a updateMatrix function", () => {
         [0, 0, 0, 0, 0, 0],
         [0, 0, 0, 0, 0, 0],
       ];
-      const result = updateMatrix(count, row, column);
+      const result = updateMatrix(newMatrix, count, row, column);
 
       expect(result).toEqual(expected);
     });
