@@ -84,9 +84,9 @@ function updateMatrix(matrix, count, row, column) {
 function loopMatrix(matrix) {
   const newestMatrix = [
     [0, 0, 0, 0, 0, 0],
-    [0, 0, 0, 0, 0, 0],
-    [0, 0, 0, 0, 0, 0],
-    [0, 0, 0, 0, 0, 0],
+    [0, 0, 1, 0, 0, 0],
+    [0, 0, 1, 0, 0, 0],
+    [0, 0, 1, 0, 0, 0],
     [0, 0, 0, 0, 0, 0],
     [0, 0, 0, 0, 0, 0],
   ];
@@ -110,14 +110,18 @@ function loopMatrix(matrix) {
       }
     }
   }
+  console.log(newestMatrix);
   return newestMatrix;
 }
 
-// funcion para repetir el loop
+function gameOfLife(number, matrix) {
+  let changingMatrix = loopMatrix(matrix);
+  for (number = 0; number < 5; number++) {
+    changingMatrix = loopMatrix(changingMatrix);
+  }
+}
 
-function gameOfLife() {}
-
-loopMatrix(newMatrix);
+gameOfLife(10, newMatrix);
 
 module.exports = {
   checkOneOrZero,
