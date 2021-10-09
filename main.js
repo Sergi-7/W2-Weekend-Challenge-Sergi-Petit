@@ -53,7 +53,9 @@ function checkCountOfOnes(count) {
   if (count >= 4) {
     return false;
   }
-  return true;
+  if (count === 2 || count === 3) {
+    return true;
+  }
 }
 
 // funcion para comprobar si la posicion es 1 o 0
@@ -69,28 +71,27 @@ function checkOneOrZero(matrix, positionX, positionY) {
 
 // funcion crear nueva matriz
 
-function updateMatrix(count, row, column) {
-  const updatedMatrix = [
-    [0, 0, 0, 0, 0, 0],
-    [0, 0, 1, 0, 0, 0],
-    [0, 0, 1, 0, 0, 0],
-    [0, 0, 1, 0, 0, 0],
-    [0, 0, 0, 0, 0, 0],
-    [0, 0, 0, 0, 0, 0],
-  ];
-
+function updateMatrix(matrix, count, row, column) {
   if (count === true) {
-    updatedMatrix[row][column] = 1;
+    matrix[row][column] = 1;
   } else {
-    updatedMatrix[row][column] = 0;
+    matrix[row][column] = 0;
   }
-  return updatedMatrix;
+  return matrix;
 }
 
 // funcion para recorrer la matriz
 function loopMatrix(matrix) {
+  const newestMatrix = [
+    [0, 0, 0, 0, 0, 0],
+    [0, 0, 0, 0, 0, 0],
+    [0, 0, 0, 0, 0, 0],
+    [0, 0, 0, 0, 0, 0],
+    [0, 0, 0, 0, 0, 0],
+    [0, 0, 0, 0, 0, 0],
+  ];
   for (let row = 1; row < matrix.length - 1; row++) {
-    for (let column = 1; column < matrix[column].length - 1; column++) {
+    for (let column = 1; column < matrix[row].length - 1; column++) {
       const actualRow = row;
       const actualColumn = column;
       const checkNeighbourCount = checkNeighbours(
@@ -102,19 +103,26 @@ function loopMatrix(matrix) {
 
       if (oneOrZero === true) {
         const countOfOnes = checkCountOfOnes(checkNeighbourCount);
-        updateMatrix(countOfOnes, actualRow, actualColumn);
+        updateMatrix(newestMatrix, countOfOnes, actualRow, actualColumn);
       } else if (oneOrZero === false) {
-        const countOfZeros = checkCountOfOnes(checkNeighbourCount);
-        updateMatrix(countOfZeros, actualRow, actualColumn);
+        const countOfZeros = checkCountOfZeros(checkNeighbourCount);
+        updateMatrix(newestMatrix, countOfZeros, actualRow, actualColumn);
       }
     }
   }
-  return updateMatrix();
+  return newestMatrix;
 }
+
+// funcion para repetir el loop
+
+function gameOfLife() {}
+
+loopMatrix(newMatrix);
 
 module.exports = {
   checkOneOrZero,
   checkCountOfOnes,
   checkCountOfZeros,
   checkNeighbours,
+  updateMatrix,
 };
