@@ -105,3 +105,7 @@ dist
 
 # sonarqube
 .scannerwork
+
+#compiled files
+styles.css
+styles.css.map
