@@ -55,6 +55,7 @@ function checkCountOfOnes(count) {
   }
   return true;
 }
+
 // funcion para comprobar si la posicion es 1 o 0
 
 function checkOneOrZero(matrix, positionX, positionY) {
@@ -66,21 +67,9 @@ function checkOneOrZero(matrix, positionX, positionY) {
   }
 }
 
-// funcion para recorrer la matriz
-function loopMatrix(matrix) {
-  for (let row = 1; row < matrix.length - 1; row++) {
-    for (let column = 1; column < matrix[column].length - 1; column++) {
-      const actualRow = row;
-      const actualColumn = column;
-
-      checkNeighbours(matrix, actualRow, actualColumn);
-    }
-  }
-}
-
 // funcion crear nueva matriz
 
-function updateMatrix(count) {
+function updateMatrix(count, row, column) {
   const updatedMatrix = [
     [0, 0, 0, 0, 0, 0],
     [0, 0, 1, 0, 0, 0],
@@ -90,14 +79,42 @@ function updateMatrix(count) {
     [0, 0, 0, 0, 0, 0],
   ];
 
-  for (let row = 1; row < updatedMatrix.length - 1; row++) {
-    for (let column = 1; column < updatedMatrix.length - 1; column++) {
-      if (count === true) {
-        updatedMatrix[row][column] = 1;
-      } else {
-        updatedMatrix[row][column] = 0;
-      }
-    }
+  if (count === true) {
+    updatedMatrix[row][column] = 1;
+  } else {
+    updatedMatrix[row][column] = 0;
   }
   return updatedMatrix;
 }
+
+// funcion para recorrer la matriz
+function loopMatrix(matrix) {
+  for (let row = 1; row < matrix.length - 1; row++) {
+    for (let column = 1; column < matrix[column].length - 1; column++) {
+      const actualRow = row;
+      const actualColumn = column;
+      const checkNeighbourCount = checkNeighbours(
+        matrix,
+        actualRow,
+        actualColumn
+      );
+      const oneOrZero = checkOneOrZero(matrix, actualRow, actualColumn);
+
+      if (oneOrZero === true) {
+        const countOfOnes = checkCountOfOnes(checkNeighbourCount);
+        updateMatrix(countOfOnes, actualRow, actualColumn);
+      } else if (oneOrZero === false) {
+        const countOfZeros = checkCountOfOnes(checkNeighbourCount);
+        updateMatrix(countOfZeros, actualRow, actualColumn);
+      }
+    }
+  }
+  return updateMatrix();
+}
+
+module.exports = {
+  checkOneOrZero,
+  checkCountOfOnes,
+  checkCountOfZeros,
+  checkNeighbours,
+};
