@@ -110,34 +110,38 @@ function loopMatrix(matrix) {
       }
     }
   }
-  console.log(newestMatrix);
+
   return newestMatrix;
+}
+
+const squares = document.querySelectorAll(".container__row--square");
+
+function changeColors(matrix) {
+  const length = 6;
+  for (let row = 0; row < matrix.length; row++) {
+    for (let column = 0; column < matrix.length; column++) {
+      if (matrix[row][column] === 1) {
+        squares[column + length * row].style.backgroundColor = "yellow";
+      }
+    }
+  }
 }
 
 function gameOfLife(number, matrix) {
   let changingMatrix = loopMatrix(matrix);
-  for (number = 0; number < 5; number++) {
+  for (let i = 0; i < number; i++) {
     changingMatrix = loopMatrix(changingMatrix);
+    changeColors(changingMatrix);
   }
 }
 
-gameOfLife(10, newMatrix);
-
-const test = document.getElementById("test");
-console.log(test);
-const squares = document.querySelectorAll(".container__row--square");
-squares[0].style.backgroundColor = "yellow";
-
-function testing() {
-  alert("hi");
-}
-function changeBackgroundColor() {
-  console.log("hi");
-  squares.style.backgroundColor = "yellow";
+function startGame() {
+  gameOfLife(10, newMatrix);
 }
 
-squares.addEventListener("click", changeBackgroundColor);
-test.addEventListener("click", testing);
+const startGameButton = document.getElementById("button");
+startGameButton.addEventListener("click", startGame);
+
 module.exports = {
   checkOneOrZero,
   checkCountOfOnes,

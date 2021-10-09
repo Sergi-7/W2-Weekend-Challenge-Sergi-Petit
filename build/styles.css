@@ -30,4 +30,9 @@ h1 {
   background-color: lightgray;
 }
 
+button {
+  width: 150px;
+  height: 70px;
+}
+
 /*# sourceMappingURL=styles.css.map */
