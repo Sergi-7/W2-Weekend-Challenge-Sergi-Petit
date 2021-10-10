@@ -20,6 +20,7 @@ const squares = document.querySelectorAll(".container__row--square");
 const startGameButton = document.getElementById("button");
 startGameButton.addEventListener("click", startGame);
 
+// añadir event a todos los divs
 for (let i = 0; i < squares.length; i++) {
   squares[i].addEventListener("click", () => {
     if (squares[i].style.backgroundColor === "yellow") {
@@ -128,6 +129,7 @@ function loopMatrix(matrix) {
     [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
     [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
   ];
+
   for (let row = 1; row < matrix.length - 1; row++) {
     for (let column = 1; column < matrix[row].length - 1; column++) {
       const actualRow = row;
@@ -148,7 +150,6 @@ function loopMatrix(matrix) {
       }
     }
   }
-
   return newestMatrix;
 }
 
@@ -165,8 +166,6 @@ function changeColors(matrix) {
     }
   }
 }
-
-changeColors(newMatrix);
 
 function gameOfLife(number, matrix) {
   let iterator = 0;
