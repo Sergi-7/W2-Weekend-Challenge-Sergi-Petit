@@ -5,9 +5,9 @@ const newMatrix = [
   [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
   [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
   [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-  [0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0],
-  [0, 0, 0, 0, 0, 0, 1, 1, 1, 0, 0, 0, 0, 0, 0],
-  [0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0],
+  [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+  [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+  [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
   [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
   [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
   [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
@@ -21,10 +21,19 @@ const startGameButton = document.getElementById("button");
 startGameButton.addEventListener("click", startGame);
 
 for (let i = 0; i < squares.length; i++) {
-  squares[i].addEventListener(
-    "click",
-    () => (squares[i].style.backgroundColor = "yellow")
-  );
+  squares[i].addEventListener("click", () => {
+    if (squares[i].style.backgroundColor === "yellow") {
+      const row = Math.trunc(i / 15);
+      const column = i - 15 * row;
+      squares[i].style.backgroundColor = "lightgrey";
+      newMatrix[row][column] = 0;
+    } else {
+      const row = Math.trunc(i / 15);
+      const column = i - 15 * row;
+      newMatrix[row][column] = 1;
+      squares[i].style.backgroundColor = "yellow";
+    }
+  });
 }
 
 // funcion para comprobar vecinos
@@ -172,7 +181,7 @@ function gameOfLife(number, matrix) {
 }
 
 function startGame() {
-  gameOfLife(20, newMatrix);
+  gameOfLife(100, newMatrix);
 }
 
 module.exports = {
