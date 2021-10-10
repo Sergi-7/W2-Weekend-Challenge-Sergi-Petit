@@ -5,9 +5,9 @@ const newMatrix = [
   [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
   [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
   [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+  [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
   [0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0],
-  [0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0],
-  [0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0],
+  [0, 0, 0, 0, 0, 0, 1, 1, 1, 0, 0, 0, 0, 0, 0],
   [0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0],
   [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
   [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
@@ -150,21 +150,17 @@ function changeColors(matrix) {
 
 changeColors(newMatrix);
 
-function initializeGame(matrix) {
-  const initialArray = loopMatrix(matrix);
-  return initialArray;
-}
-
 function gameOfLife(number, matrix) {
   let iterator = 0;
+  let changingMatrix = loopMatrix(matrix);
+  setTimeout(changeColors(changingMatrix), 1000);
 
   const loop = setInterval(() => {
-    let changingMatrix = loopMatrix(matrix);
     changingMatrix = loopMatrix(changingMatrix);
     changeColors(changingMatrix);
     iterator++;
     if (iterator === number) clearInterval(loop);
-  }, 500);
+  }, 1000);
 }
 
 function startGame() {
