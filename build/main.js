@@ -1,4 +1,4 @@
-const newMatrix = [
+let newMatrix = [
   [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
   [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
   [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
@@ -185,7 +185,7 @@ function gameOfLife(number, matrix) {
 }
 
 function startGame() {
-  gameOfLife(100, newMatrix);
+  gameOfLife(200, newMatrix);
 }
 
 function stopGame() {
@@ -207,6 +207,7 @@ function stopGame() {
     [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
   ];
   changeColors(endgameMatrix);
+  newMatrix = endgameMatrix;
   return endgameMatrix;
 }
 
