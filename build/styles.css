@@ -36,6 +36,9 @@ main {
   border: 1px solid #5f5e5e;
   flex-grow: 1;
 }
+.container__row--no-display {
+  display: none;
+}
 .container__row--square {
   border: 1px solid black;
   flex-grow: 1;
@@ -60,6 +63,10 @@ button:hover {
   cursor: pointer;
   background-color: #584e4e;
   font-size: xx-large;
+}
+
+.footer {
+  display: flex;
 }
 
 /*# sourceMappingURL=styles.css.map */

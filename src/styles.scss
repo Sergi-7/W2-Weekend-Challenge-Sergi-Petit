@@ -37,6 +37,9 @@ main {
     display: flex;
     border: 1px solid rgb(95, 94, 94);
     flex-grow: 1;
+    &--no-display {
+      display: none;
+    }
     &--square {
       border: 1px solid black;
       flex-grow: 1;
@@ -63,4 +66,8 @@ button {
     background-color: rgb(88, 78, 78);
     font-size: xx-large;
   }
+}
+
+.footer {
+  display: flex;
 }

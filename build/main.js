@@ -18,6 +18,7 @@ const newMatrix = [
 
 const squares = document.querySelectorAll(".container__row--square");
 const startGameButton = document.getElementById("button");
+const endGameButton = document.getElementById("button-stop");
 startGameButton.addEventListener("click", startGame);
 
 // añadir event a todos los divs
@@ -177,10 +178,36 @@ function gameOfLife(number, matrix) {
     iterator++;
     if (iterator === number) clearInterval(loop);
   }, 1000);
+  endGameButton.addEventListener("click", () => {
+    clearInterval(loop);
+    stopGame();
+  });
 }
 
 function startGame() {
   gameOfLife(100, newMatrix);
+}
+
+function stopGame() {
+  const endgameMatrix = [
+    [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+    [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+    [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+    [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+    [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+    [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+    [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+    [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+    [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+    [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+    [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+    [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+    [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+    [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+    [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+  ];
+  changeColors(endgameMatrix);
+  return endgameMatrix;
 }
 
 module.exports = {
