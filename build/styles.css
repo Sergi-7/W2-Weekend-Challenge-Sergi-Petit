@@ -6,10 +6,20 @@ body {
   display: flex;
   flex-direction: column;
   align-items: center;
+  background-color: honeydew;
 }
 
 h1 {
   border: 1px solid #436643;
+  padding: 5px;
+  border-radius: 5px;
+  background-color: lightseagreen;
+}
+
+main {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
 .container {
@@ -33,6 +43,8 @@ h1 {
 button {
   width: 150px;
   height: 70px;
+  border-radius: 10px;
+  margin: 20px;
 }
 
 /*# sourceMappingURL=styles.css.map */

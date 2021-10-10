@@ -6,12 +6,21 @@ body {
   display: flex;
   flex-direction: column;
   align-items: center;
+  background-color: honeydew;
 }
 
 h1 {
   border: 1px solid rgb(67, 102, 67);
+  padding: 5px;
+  border-radius: 5px;
+  background-color: lightseagreen;
 }
 
+main {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
 .container {
   display: flex;
   flex-direction: column;
@@ -33,4 +42,6 @@ h1 {
 button {
   width: 150px;
   height: 70px;
+  border-radius: 10px;
+  margin: 20px;
 }

@@ -134,7 +134,6 @@ changeColors(newMatrix);
 
 function gameOfLife(number, matrix) {
   let iterator = 0;
-  setTimeout(500);
   let changingMatrix = loopMatrix(matrix);
 
   const loop = setInterval(() => {
