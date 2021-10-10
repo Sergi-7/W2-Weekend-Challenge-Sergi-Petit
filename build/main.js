@@ -5,7 +5,6 @@ const newMatrix = [
   [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
   [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
   [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-  [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
   [0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0],
   [0, 0, 0, 0, 0, 0, 1, 1, 1, 0, 0, 0, 0, 0, 0],
   [0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0],
@@ -14,7 +13,19 @@ const newMatrix = [
   [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
   [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
   [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+  [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
 ];
+
+const squares = document.querySelectorAll(".container__row--square");
+const startGameButton = document.getElementById("button");
+startGameButton.addEventListener("click", startGame);
+
+for (let i = 0; i < squares.length; i++) {
+  squares[i].addEventListener(
+    "click",
+    () => (squares[i].style.backgroundColor = "yellow")
+  );
+}
 
 // funcion para comprobar vecinos
 function checkNeighbours(matrix, row, column) {
@@ -132,8 +143,6 @@ function loopMatrix(matrix) {
   return newestMatrix;
 }
 
-const squares = document.querySelectorAll(".container__row--square");
-
 function changeColors(matrix) {
   const length = 15;
   for (let row = 0; row < matrix.length; row++) {
@@ -154,7 +163,6 @@ function gameOfLife(number, matrix) {
   let iterator = 0;
   let changingMatrix = loopMatrix(matrix);
   setTimeout(changeColors(changingMatrix), 1000);
-
   const loop = setInterval(() => {
     changingMatrix = loopMatrix(changingMatrix);
     changeColors(changingMatrix);
@@ -166,9 +174,6 @@ function gameOfLife(number, matrix) {
 function startGame() {
   gameOfLife(20, newMatrix);
 }
-
-const startGameButton = document.getElementById("button");
-startGameButton.addEventListener("click", startGame);
 
 module.exports = {
   checkOneOrZero,
