@@ -1,11 +1,31 @@
 const newMatrix = [
-  [0, 0, 0, 0, 0, 0],
-  [0, 0, 1, 0, 0, 0],
-  [0, 0, 1, 0, 0, 0],
-  [0, 0, 1, 0, 0, 0],
-  [0, 0, 1, 0, 0, 0],
-  [0, 0, 0, 0, 0, 0],
+  [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+  [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+  [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+  [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+  [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+  [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+  [0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0],
+  [0, 0, 0, 0, 0, 0, 1, 1, 1, 0, 0, 0, 0, 0, 0],
+  [0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0],
+  [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+  [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+  [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+  [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+  [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+  [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
 ];
+
+const squares = document.querySelectorAll(".container__row--square");
+const startGameButton = document.getElementById("button");
+startGameButton.addEventListener("click", startGame);
+
+for (let i = 0; i < squares.length; i++) {
+  squares[i].addEventListener(
+    "click",
+    () => (squares[i].style.backgroundColor = "yellow")
+  );
+}
 
 // funcion para comprobar vecinos
 function checkNeighbours(matrix, row, column) {
@@ -83,12 +103,21 @@ function updateMatrix(matrix, count, row, column) {
 // funcion para recorrer la matriz
 function loopMatrix(matrix) {
   const newestMatrix = [
-    [0, 0, 0, 0, 0, 0],
-    [0, 0, 1, 0, 0, 0],
-    [0, 0, 1, 0, 0, 0],
-    [0, 0, 1, 0, 0, 0],
-    [0, 0, 0, 0, 0, 0],
-    [0, 0, 0, 0, 0, 0],
+    [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+    [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+    [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+    [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+    [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+    [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+    [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+    [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+    [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+    [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+    [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+    [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+    [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+    [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+    [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
   ];
   for (let row = 1; row < matrix.length - 1; row++) {
     for (let column = 1; column < matrix[row].length - 1; column++) {
@@ -114,10 +143,8 @@ function loopMatrix(matrix) {
   return newestMatrix;
 }
 
-const squares = document.querySelectorAll(".container__row--square");
-
 function changeColors(matrix) {
-  const length = 6;
+  const length = 15;
   for (let row = 0; row < matrix.length; row++) {
     for (let column = 0; column < matrix.length; column++) {
       if (matrix[row][column] === 1) {
@@ -134,23 +161,19 @@ changeColors(newMatrix);
 
 function gameOfLife(number, matrix) {
   let iterator = 0;
-  setTimeout(500);
   let changingMatrix = loopMatrix(matrix);
-
+  setTimeout(changeColors(changingMatrix), 1000);
   const loop = setInterval(() => {
     changingMatrix = loopMatrix(changingMatrix);
     changeColors(changingMatrix);
     iterator++;
     if (iterator === number) clearInterval(loop);
-  }, 500);
+  }, 1000);
 }
 
 function startGame() {
   gameOfLife(20, newMatrix);
 }
-
-const startGameButton = document.getElementById("button");
-startGameButton.addEventListener("click", startGame);
 
 module.exports = {
   checkOneOrZero,
